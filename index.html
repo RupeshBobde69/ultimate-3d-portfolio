@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rupesh Bobde — Ultimate 3D Chaos Portfolio</title>
+  <meta name="description" content="Full-Stack Developer | Ultimate 3D Interactive Portfolio with Games, Bloom, Scroll Fly-through" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <canvas id="threeCanvas"></canvas>
+  <canvas id="bgCanvas"></canvas>
+  <div class="glitch-overlay" id="glitchOverlay"></div>
+  <div class="scanlines"></div>
+  <div class="vignette"></div>
+
+  <nav class="nav" id="nav">
+    <div class="nav-logo" data-text="RB">RB</div>
+    <ul class="nav-links">
+      <li><a href="#hero" data-section="hero">Home</a></li>
+      <li><a href="#about" data-section="about">About</a></li>
+      <li><a href="#projects" data-section="projects">Projects</a></li>
+      <li><a href="#skills" data-section="skills">Skills</a></li>
+      <li><a href="#games" data-section="games" class="nav-games">Games 🎮</a></li>
+      <li><a href="#contact" data-section="contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="section hero">
+    <div class="hero-3d-layer" id="heroLayer">
+      <div class="hero-content">
+        <p class="hero-tag">FULL-STACK DEVELOPER • NAGPUR</p>
+        <h1 class="hero-name">
+          <span class="glitch" data-text="RUPESH">RUPESH</span>
+          <span class="glitch" data-text="BOBDE">BOBDE</span>
+        </h1>
+        <p class="hero-sub">I build systems that think.<br>And sites that warp spacetime.</p>
+        <div class="hero-cta">
+          <a href="#games" class="btn btn-chaos">Enter the Chaos</a>
+          <a href="#projects" class="btn btn-ghost">3D Projects</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num" data-target="3">0</span><span class="stat-label">Major Projects</span></div>
+          <div class="stat"><span class="stat-num" data-target="8">0</span><span class="stat-label">Tech Stack</span></div>
+          <div class="stat"><span class="stat-num" data-target="100">0</span><span class="stat-label">% Chaos</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll to fly through dimensions ↓</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title" data-text="ABOUT">ABOUT</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-card glass depth-card">
+        <div class="card-inner">
+          <h3>Who I Am</h3>
+          <p>Full-stack developer from Nagpur hunting for a software development internship. I live at the intersection of backend logic, auth systems, and AI-powered products. Currently leveling up system design and problem-solving by shipping real things.</p>
+        </div>
+      </div>
+      <div class="about-card glass depth-card">
+        <div class="card-inner">
+          <h3>What Drives Me</h3>
+          <p>Building systems that actually matter — blood donation coordination, deepfake detection, risk-based authentication. I care about clean architecture, security, and experiences that feel alive.</p>
+        </div>
+      </div>
+      <div class="about-card glass depth-card highlight">
+        <div class="card-inner">
+          <h3>Currently Seeking</h3>
+          <p>Software Development Internship — ready to apply full-stack + backend knowledge in real product environments.</p>
+          <div class="contact-quick">
+            <a href="mailto:rupeshbobde09@gmail.com">📧 rupeshbobde09@gmail.com</a>
+            <a href="tel:+918788591592">📱 +91 87885 91592</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS — Interactive 3D Models -->
+  <section id="projects" class="section projects">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title" data-text="PROJECTS">PROJECTS</h2>
+      <p class="section-sub">Drag the 3D models • Hover cards for depth</p>
+    </div>
+    <div class="projects-stage">
+      <article class="project-card depth-card" data-project="veinlink">
+        <div class="project-model-wrap">
+          <canvas class="project-model" id="modelVein" width="220" height="160"></canvas>
+        </div>
+        <div class="project-content">
+          <span class="project-tag">AI • Real-time</span>
+          <h3>VeinLink</h3>
+          <p class="project-desc">AI-Based Blood Donation Coordination System</p>
+          <ul>
+            <li>AI-driven donor–recipient matching</li>
+            <li>Real-time notification & coordination</li>
+            <li>Scalable architecture for emergency use</li>
+          </ul>
+          <div class="project-tech"><span>AI</span><span>Real-time</span><span>Backend</span></div>
+        </div>
+      </article>
+
+      <article class="project-card depth-card" data-project="deepfake">
+        <div class="project-model-wrap">
+          <canvas class="project-model" id="modelDeep" width="220" height="160"></canvas>
+        </div>
+        <div class="project-content">
+          <span class="project-tag">AI • Security</span>
+          <h3>Deepfake Detection</h3>
+          <p class="project-desc">Real-Time Video Identity Verification</p>
+          <ul>
+            <li>AI-based deepfake detection pipeline</li>
+            <li>Video verification & identity validation</li>
+            <li>Backend APIs for verification logic</li>
+          </ul>
+          <div class="project-tech"><span>AI/ML</span><span>Video</span><span>APIs</span></div>
+        </div>
+      </article>
+
+      <article class="project-card depth-card" data-project="aegis">
+        <div class="project-model-wrap">
+          <canvas class="project-model" id="modelAegis" width="220" height="160"></canvas>
+        </div>
+        <div class="project-content">
+          <span class="project-tag">Auth • Security</span>
+          <h3>AegisAuth</h3>
+          <p class="project-desc">Intelligent Risk-Based Access Control</p>
+          <ul>
+            <li>Adaptive authentication model</li>
+            <li>Dynamic risk-based login engine</li>
+            <li>Access control decision logic</li>
+          </ul>
+          <div class="project-tech"><span>RBAC</span><span>JWT</span><span>Security</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section skills">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title" data-text="SKILLS">SKILLS</h2>
+    </div>
+    <div class="skills-arena">
+      <div class="skill-sphere-container">
+        <div class="skill-sphere" id="skillSphere">
+          <div class="skill-node">React</div>
+          <div class="skill-node">Next.js</div>
+          <div class="skill-node">Java</div>
+          <div class="skill-node">TypeScript</div>
+          <div class="skill-node">Firebase</div>
+          <div class="skill-node">Supabase</div>
+          <div class="skill-node">JWT / RBAC</div>
+          <div class="skill-node">Git</div>
+          <div class="skill-node">Python</div>
+          <div class="skill-node">Convex</div>
+        </div>
+      </div>
+      <div class="skills-list glass depth-card">
+        <div class="card-inner">
+          <div class="skill-group"><h4>Languages</h4><p>C • Java • JavaScript • TypeScript • Python</p></div>
+          <div class="skill-group"><h4>Frontend</h4><p>React.js • Next.js • HTML5 • CSS3</p></div>
+          <div class="skill-group"><h4>Backend & Auth</h4><p>Core Java • REST APIs • Clerk • JWT • RBAC • Risk-Based Auth</p></div>
+          <div class="skill-group"><h4>Databases</h4><p>Firebase • Supabase • Convex</p></div>
+          <div class="skill-group"><h4>QA & Tools</h4><p>Manual / Functional / Regression Testing • Postman • GitHub • VS Code</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES — 5 games -->
+  <section id="games" class="section games">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title" data-text="GAMES">GAMES</h2>
+      <p class="section-sub">Five dimensions of chaos. Score high. Break records.</p>
+    </div>
+
+    <div class="games-grid">
+      <!-- 1 Snake -->
+      <div class="game-card depth-card">
+        <div class="card-inner">
+          <div class="game-header"><h3>Neon Snake</h3><span class="game-score" id="snakeScore">Score: 0</span></div>
+          <canvas id="snakeCanvas" width="400" height="400"></canvas>
+          <div class="game-controls">
+            <button class="btn btn-sm" id="snakeStart">Start / Restart</button>
+            <p class="hint">Arrow keys or swipe</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 Memory -->
+      <div class="game-card depth-card">
+        <div class="card-inner">
+          <div class="game-header"><h3>Memory Matrix</h3><span class="game-score" id="memoryScore">Moves: 0</span></div>
+          <div class="memory-board" id="memoryBoard"></div>
+          <div class="game-controls">
+            <button class="btn btn-sm" id="memoryStart">New Game</button>
+            <p class="hint">Match the tech icons</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Particle -->
+      <div class="game-card wide depth-card">
+        <div class="card-inner">
+          <div class="game-header"><h3>Particle Annihilator</h3><span class="game-score" id="particleScore">Destroyed: 0</span></div>
+          <canvas id="particleCanvas" width="800" height="320"></canvas>
+          <div class="game-controls">
+            <button class="btn btn-sm" id="particleStart">Unleash Chaos</button>
+            <p class="hint">Click / tap to destroy particles</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Reaction -->
+      <div class="game-card depth-card">
+        <div class="card-inner">
+          <div class="game-header"><h3>Reaction Core</h3><span class="game-score" id="reactScore">Best: —</span></div>
+          <div class="react-arena" id="reactArena">
+            <p class="react-msg" id="reactMsg">Click START then wait for green…</p>
+          </div>
+          <div class="game-controls">
+            <button class="btn btn-sm" id="reactStart">Start</button>
+            <p class="hint">How fast can you react?</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 Breakout -->
+      <div class="game-card depth-card">
+        <div class="card-inner">
+          <div class="game-header"><h3>Neon Breakout</h3><span class="game-score" id="breakScore">Score: 0</span></div>
+          <canvas id="breakCanvas" width="400" height="320"></canvas>
+          <div class="game-controls">
+            <button class="btn btn-sm" id="breakStart">Start / Restart</button>
+            <p class="hint">Mouse / touch to move paddle</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title" data-text="CONTACT">CONTACT</h2>
+    </div>
+    <div class="contact-box glass depth-card">
+      <div class="card-inner">
+        <p class="contact-lead">Ready to build something that warps reality?</p>
+        <div class="contact-links">
+          <a href="mailto:rupeshbobde09@gmail.com" class="contact-link"><span>📧</span> rupeshbobde09@gmail.com</a>
+          <a href="tel:+918788591592" class="contact-link"><span>📱</span> +91 87885 91592</a>
+          <a href="https://github.com/RupeshBobde69" target="_blank" rel="noopener" class="contact-link"><span>💻</span> GitHub</a>
+          <a href="https://www.linkedin.com/in/rupeshbobde-723497371" target="_blank" rel="noopener" class="contact-link"><span>🔗</span> LinkedIn</a>
+        </div>
+        <p class="location">📍 Nagpur City, India</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Built with pure dimensional chaos by Rupesh Bobde • 2026</p>
+    <p class="footer-sub">Scroll-driven fly-through • Bloom • Chromatic aberration • 5 games • Interactive 3D models</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
